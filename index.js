@@ -8,7 +8,21 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, position) => {
+  if (Number.isInteger(position)) {
+    return (new Date(dates[position]).getTime() / 1000).toString();
+  }
+
+  let dateInEpoch = [];
+
+  for (let date of dates) {
+    dateInEpoch.push(new Date(date).getTime() / 1000);
+  }
+
+  dateInEpoch.sort((a, b) => a - b);
+
+  return dateInEpoch.map((date) => date.toString()).join("-");
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
